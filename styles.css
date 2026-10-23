@@ -1,0 +1,25 @@
+:root{--bg:#f1f5f9;--fg:#0f172a;--card:#fff;--muted:#64748b;--accent:#0284c7;--ok:#16a34a;--err:#dc2626;--border:#e2e8f0}
+@media (prefers-color-scheme:dark){:root{--bg:#0f172a;--fg:#e2e8f0;--card:#1e293b;--muted:#94a3b8;--accent:#38bdf8;--border:#334155}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.card{width:100%;max-width:420px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;text-align:center}
+h1{margin:0 0 16px;font-size:1.4rem;letter-spacing:-.02em}
+.label{margin:0;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.target{margin:6px 0 20px;padding:10px 12px;border:1px dashed var(--border);border-radius:10px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;word-break:break-all}
+.indicator{position:relative;width:140px;height:140px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.ring{position:absolute;inset:0;border:2px solid var(--accent);border-radius:50%;opacity:.5;transform:scale(.4)}
+.indicator.active .ring{animation:pulse 2s ease-out infinite}
+.indicator.active .r2{animation-delay:.6s}.indicator.active .r3{animation-delay:1.2s}
+.indicator.success{color:var(--ok)}.indicator.error{color:var(--err)}
+@keyframes pulse{to{transform:scale(1);opacity:0}}
+.hint{color:var(--muted);font-size:.9rem;margin:0 0 16px}
+.banner{margin:0 0 16px;padding:10px 12px;border-radius:10px;font-size:.9rem;text-align:left}
+.banner.success{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok);border:1px solid var(--ok)}
+.banner.error{background:color-mix(in srgb,var(--err) 15%,transparent);color:var(--err);border:1px solid var(--err)}
+button{width:100%;padding:14px;border:0;border-radius:12px;background:var(--accent);color:#fff;font-size:1rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+button:disabled{opacity:.55;cursor:not-allowed}
+button.success{background:var(--ok)}
+.spinner{display:none;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+button.loading .spinner{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.ring,.spinner{animation:none!important}}
